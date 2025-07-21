@@ -81,7 +81,7 @@ const DashboardStudent = () => {
         )}
       </Paper>
     </Container>
-  );
+);
 };
 
 export default DashboardStudent;

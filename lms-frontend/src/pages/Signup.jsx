@@ -108,7 +108,7 @@ const Signup = () => {
         </Box>
       </Box>
     </Container>
-  );
+);
 };
 
 export default Signup;

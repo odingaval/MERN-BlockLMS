@@ -87,7 +87,7 @@ const Login = () => {
         </Box>
       </Box>
     </Container>
-  );
+);
 };
 
 export default Login;

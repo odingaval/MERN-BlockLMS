@@ -60,7 +60,7 @@ const Landing = () => {
       {error && <Alert severity="error">{error}</Alert>}
       
       <Grid container spacing={4}>
-        {courses.map(course => (
+      {courses.map(course => (
           <Grid item key={course._id} xs={12} sm={6} md={4}>
             <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
               <CardContent sx={{ flexGrow: 1 }}>
@@ -79,10 +79,10 @@ const Landing = () => {
               </CardActions>
             </Card>
           </Grid>
-        ))}
+      ))}
       </Grid>
     </Container>
-  );
+);
 };
 
 export default Landing;

@@ -90,7 +90,7 @@ const Lesson = () => {
         </Typography>
       </Paper>
     </Container>
-  );
+);
 };
 
 export default Lesson;

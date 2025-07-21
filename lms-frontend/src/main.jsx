@@ -32,7 +32,7 @@ createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AuthProvider>
-        <App />
+    <App />
       </AuthProvider>
     </ThemeProvider>
   </StrictMode>,

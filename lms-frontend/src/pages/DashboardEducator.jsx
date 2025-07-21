@@ -83,7 +83,7 @@ const DashboardEducator = () => {
         )}
       </Paper>
     </Container>
-  );
+);
 };
 
 export default DashboardEducator;

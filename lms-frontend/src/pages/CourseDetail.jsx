@@ -110,7 +110,7 @@ const CourseDetail = () => {
         </Paper>
       )}
     </Container>
-  );
+);
 };
 
 export default CourseDetail;
