@@ -6,7 +6,7 @@ Design, develop, and deploy a comprehensive full-stack MERN application that sho
 ## 📂 Tasks
 
 ### Task 1: Project Planning and Design
-- Choose a project idea that solves a real-world problem
+- Choose a project idea that solves a real-world problem 
 - Create wireframes and mockups for your application
 - Design the database schema and relationships
 - Plan the API endpoints and data flow
@@ -86,3 +86,162 @@ Feel free to come up with your own idea that demonstrates your skills and intere
    - Screenshots of key features
 8. Your final submission will be automatically graded based on the criteria in the autograding configuration
 9. The instructor will review your complete project after the final push 
+
+---
+
+## 1. **Choose a React Starter**
+
+For a MERN project, the most common choices are:
+- **Create React App (CRA):** Easiest, but less modern.
+- **Vite:** Fast, modern, and recommended for new projects.
+
+**I recommend Vite** for its speed and simplicity.
+
+---
+
+## 2. **Scaffolding with Vite**
+
+### **A. Run this command in your project root:**
+```bash
+npm create vite@latest lms-frontend -- --template react
+```
+
+or, if you prefer yarn:
+```bash
+yarn create vite lms-frontend --template react
+```
+
+### **B. Install dependencies:**
+```bash
+cd lms-frontend
+npm install
+```
+
+### **C. Start the development server:**
+```bash
+npm run dev
+```
+
+---
+
+## 3. **Recommended Folder Structure**
+
+After scaffolding, update your `src/` folder like this:
+```
+src/
+  components/
+  pages/
+  mock/
+  App.jsx
+  main.jsx
+```
+
+---
+
+## 4. **Next Steps**
+
+- Set up React Router for page navigation.
+- Create placeholder pages (Landing, Login, Signup, Dashboard, Course, Lesson).
+- Add a simple Navbar for navigation.
+
+---
+
+## 5. **Would you like me to:**
+- Provide the exact commands to run?
+- Suggest the first set of dependencies (e.g., React Router, UI library)?
+- Show you how to set up routing and placeholder pages?
+
+Let me know if you want the commands, the next code steps, or both! 
+
+---
+
+## 1. Create the Backend Directory
+
+Let’s call it `lms-backend` (to match your `lms-frontend`).
+
+## 2. Initialize the Project
+
+```bash
+mkdir lms-backend
+cd lms-backend
+npm init -y
+```
+
+## 3. Install Dependencies
+
+```bash
+npm install express mongoose cors dotenv
+npm install --save-dev nodemon
+```
+
+- **express**: Web framework
+- **mongoose**: MongoDB ODM
+- **cors**: Enable cross-origin requests
+- **dotenv**: Manage environment variables
+- **nodemon**: Auto-restart server on changes (dev only)
+
+## 4. Basic Folder Structure
+
+```
+lms-backend/
+  ├── models/
+  ├── routes/
+  ├── controllers/
+  ├── .env
+  ├── server.js
+  └── package.json
+```
+
+## 5. Create a Simple Server
+
+**server.js:**
+```js
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config();
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Example route
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log(err));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+```
+
+## 6. Add a .env File
+
+**.env:**
+```
+MONGO_URI=mongodb://localhost:27017/lms
+PORT=5000
+```
+
+## 7. Add Scripts to package.json
+
+```json
+"scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js"
+}
+```
+
+---
+
+### Next Steps
+
+- I can generate the backend folder and starter files for you automatically.
+- Would you like to proceed with this structure?
+- Do you want to use local MongoDB or a cloud service (like MongoDB Atlas)?
+
+Let me know, and I’ll scaffold the backend in your project! 

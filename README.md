@@ -1,52 +1,48 @@
-# MERN Stack Capstone Project
+# BlockLMS
 
-This assignment focuses on designing, developing, and deploying a comprehensive full-stack MERN application that showcases all the skills you've learned throughout the course.
+This is a full-stack Learning Management System built with the MERN (MongoDB, Express, React, Node.js) stack. It provides a platform where educators can create and manage courses, and students can enroll, consume lesson content, and track their progress.
 
-## Assignment Overview
+## Features
 
-You will:
-1. Plan and design a full-stack MERN application
-2. Develop a robust backend with MongoDB, Express.js, and Node.js
-3. Create an interactive frontend with React.js
-4. Implement testing across the entire application
-5. Deploy the application to production
+- **User Authentication:** Secure user registration and login for both Students and Educators.
+- **Role-Based Access Control:** Separate dashboards and functionalities for Student and Educator roles.
+- **Course Creation:** Educators can create new courses, including titles, descriptions, and a dynamic list of lessons with content.
+- **Course Enrollment:** Students can browse available courses and enroll in them with a single click.
+- **Lesson Progression:** Students can view lesson content and mark lessons as complete.
+- **Progress Tracking:** A visual progress bar shows students their completion percentage for each enrolled course.
+- **Modern UI:** A clean, responsive, and polished user interface built with MUI (Material-UI).
+- **Toast Notifications:** Non-intrusive feedback for all major user actions.
+
+## Tech Stack
+
+- **Backend:** Node.js, Express.js, MongoDB (with Mongoose), JWT for authentication.
+- **Frontend:** React, React Router, MUI (Material-UI), Axios.
+- **Development:** Vite for fast frontend bundling, Nodemon for backend auto-reloading.
 
 ## Getting Started
 
-1. Accept the GitHub Classroom assignment
-2. Clone the repository to your local machine
-3. Follow the instructions in the `Week8-Assignment.md` file
-4. Plan, develop, and deploy your capstone project
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-## Files Included
+### Prerequisites
 
-- `Week8-Assignment.md`: Detailed assignment instructions
+- [Node.js](https://nodejs.org/) (v16 or later)
+- [npm](https://www.npmjs.com/)
+- [MongoDB](https://www.mongodb.com/try/download/community) installed and running locally.
 
-## Requirements
+### Installation
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Git and GitHub account
-- Accounts on deployment platforms (Render/Vercel/Netlify/etc.)
+1.  **Clone the repository:**
+    ```sh
+    git clone https://github.com/your-username/blocklms.git
+    cd blocklms
+    ```
 
-## Project Ideas
+2.  **Set up the Backend:**
+    - Navigate to the backend directory and follow the instructions in its README file.
+    - [Backend Setup Instructions](./lms-backend/README.md)
 
-The `Week8-Assignment.md` file includes several project ideas, but you're encouraged to develop your own idea that demonstrates your skills and interests.
+3.  **Set up the Frontend:**
+    - Navigate to the frontend directory and follow the instructions in its README file.
+    - [Frontend Setup Instructions](./lms-frontend/README.md)
 
-## Submission
-
-Your project will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
-
-1. Commit and push your code regularly
-2. Include comprehensive documentation
-3. Deploy your application and add the live URL to your README.md
-4. Create a video demonstration and include the link in your README.md
-
-## Resources
-
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [GitHub Classroom Guide](https://docs.github.com/en/education/manage-coursework-with-github-classroom) 
+Once both the frontend and backend servers are running, you can access the application in your browser at `http://localhost:5173`. 
