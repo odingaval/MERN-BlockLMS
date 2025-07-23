@@ -37,6 +37,22 @@ app.use(
 // Middleware
 app.use(express.json());
 
+// Logging middleware
+app.use((req, res, next) => {
+  const start = Date.now();
+  
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(
+      `[${new Date().toISOString()}] ${req.method} ${req.path} | ` +
+      `Status: ${res.statusCode} | ${duration}ms`
+    );
+  });
+  
+  next();
+});
+
+
 // Test route
 app.get('/', (req, res) => {
   res.send('API is running...');
