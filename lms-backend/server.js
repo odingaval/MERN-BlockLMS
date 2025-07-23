@@ -6,31 +6,30 @@ const path = require('path');
 
 const app = express();
 
-// CORS configuration for production and development
+// CORS configuration
 const allowedOrigins = [
-  'http://localhost:5173', // Local frontend (Vite default)
-  process.env.CLIENT_URL,  // Your Vercel frontend URL (e.g., https://your-app.vercel.app)
-].filter(Boolean); // Remove falsy values (e.g., if CLIENT_URL is undefined)
+  'http://localhost:5173',  // Local frontend (Vite default)
+  'https://mern-block-mug5hu3fb-odinga-vals-projects.vercel.app', // Your Vercel frontend
+].filter(Boolean); // Remove falsy values
 
-// Enhanced CORS setup
 app.use(
   cors({
     origin: function (origin, callback) {
       console.log('CORS check:', { origin, allowedOrigins });
-      
-      // Allow requests with no origin (e.g., mobile apps, Postman)
+
+      // Allow requests with no origin (curl, Postman)
       if (!origin) return callback(null, true);
-      
+
       if (allowedOrigins.includes(origin)) {
-        callback(null, true);
+        return callback(null, true);
       } else {
         console.error('CORS rejected:', origin);
-        callback(new Error('Not allowed by CORS'));
+        return callback(new Error('Not allowed by CORS'));
       }
     },
-    credentials: true, // Enable if using cookies/auth headers
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Explicitly allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Required for auth tokens
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
 
@@ -40,18 +39,14 @@ app.use(express.json());
 // Logging middleware
 app.use((req, res, next) => {
   const start = Date.now();
-  
   res.on('finish', () => {
     const duration = Date.now() - start;
     console.log(
-      `[${new Date().toISOString()}] ${req.method} ${req.path} | ` +
-      `Status: ${res.statusCode} | ${duration}ms`
+      `[${new Date().toISOString()}] ${req.method} ${req.path} | Status: ${res.statusCode} | ${duration}ms`
     );
   });
-  
   next();
 });
-
 
 // Test route
 app.get('/', (req, res) => {
@@ -67,7 +62,7 @@ app.use('/api/courses', courseRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 
-// Serve static files (avatars)
+// Static files (avatars)
 app.use('/uploads/avatars', express.static(path.join(__dirname, 'uploads/avatars')));
 
 // MongoDB connection
