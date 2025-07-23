@@ -9,7 +9,7 @@ const app = express();
 // CORS configuration
 const allowedOrigins = [
   'http://localhost:5173',  // Local frontend (Vite default)
-  'https://mern-block.vercel.app', // Your Vercel frontend
+  'https://mern-block-lms.vercel.app', // Your Vercel frontend
 ].filter(Boolean); // Remove falsy values
 
 app.use(
