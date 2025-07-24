@@ -1,6 +1,19 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User'); // Adjust path if needed
+const User = require('../models/User');
 const bcrypt = require('bcryptjs');
+
+// Helper to safely sign JWT
+const generateToken = (userId) => {
+  const secret = process.env.JWT_SECRET;
+
+  if (!secret) {
+    throw new Error('JWT_SECRET is not defined in environment variables');
+  }
+
+  return jwt.sign({ id: userId }, secret, {
+    expiresIn: '1d',
+  });
+};
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -12,17 +25,15 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1d',
-    });
+    const token = generateToken(user._id);
 
     res.json({
       token,
       user: { id: user._id, name: user.name, email: user.email },
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
+    console.error('Login error:', err.message);
+    res.status(500).json({ message: 'Server error during login' });
   }
 };
 
@@ -45,17 +56,15 @@ const registerUser = async (req, res) => {
       role,
     });
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1d',
-    });
+    const token = generateToken(user._id);
 
     res.status(201).json({
       token,
       user: { id: user._id, name: user.name, email: user.email },
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
+    console.error('Register error:', err.message);
+    res.status(500).json({ message: 'Server error during registration' });
   }
 };
 
